@@ -1,0 +1,2 @@
+rootProject.name='Medifind2020'
+include ':app'
