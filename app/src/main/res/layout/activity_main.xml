@@ -21,8 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_baseline_youtube_searched_for_24"
-            app:fabSize="mini">
+            android:src="@drawable/ic_baseline_search_24"
+            app:fabSize="mini"
+            app:backgroundTint="@color/black">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:src="@drawable/ic_baseline_insert_photo_24"
-            app:fabSize="mini">
+            app:fabSize="mini"
+            app:backgroundTint="@color/black">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
@@ -41,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:src="@drawable/ic_camera"
-            app:fabSize="mini">
+            app:fabSize="mini"
+            app:backgroundTint="@color/black">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,7 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add"
-            app:fabSize="normal">
+            app:fabSize="normal"
+            app:backgroundTint="@color/black">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </LinearLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "124237841154",
+    "firebase_url": "https://medproj-001.firebaseio.com",
+    "project_id": "medproj-001",
+    "storage_bucket": "medproj-001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124237841154:android:2e0cdf26ef4342da6ef81b",
+        "android_client_info": {
+          "package_name": "com.example.medifind2020"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124237841154-ovvhi70nslj6hd4ej8v4stqkteou6eet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medifind2020",
+            "certificate_hash": "0e3ea801ce0fe62c5a0bbcfb280084d69b450462"
+          }
+        },
+        {
+          "client_id": "124237841154-ipmin1vhs2gntl9vfn392b5ab8f4feea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB29wNtfQAXHrYW_GB4tEaIOo5pNsfXcrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124237841154-ipmin1vhs2gntl9vfn392b5ab8f4feea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
