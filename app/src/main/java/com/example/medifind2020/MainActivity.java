@@ -5,6 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+
+
+import android.content.Intent;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -16,6 +20,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -85,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 new String[]{Manifest.permission.CAMERA},PERMISSION_CAMERA_REQUEST_CODE);
     }
 
-    private void getActivity() {
-    }
+//    private void getActivity() {
+//    }
 
     private void ShowMenu() {
         fab_main = findViewById(R.id.fab_main);
@@ -239,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage,"Title", null);
         return Uri.parse(path);
-
     }
 
 }
