@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/list_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_baseline_photo_24">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/list_brand_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/list_image"
+        android:layout_marginTop="30dp"
+        android:text="Brand Name"
+        android:textSize="20dp"
+        android:textStyle="bold">
+    </TextView>
+
+    <TextView
+        android:id="@+id/list_gen_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/list_image"
+        android:layout_below="@id/list_brand_name"
+        android:layout_marginTop="2dp"
+        android:text="General Name"
+        android:textSize="20dp"
+        android:textStyle="italic">
+    </TextView>
+
+    <TextView
+        android:id="@+id/list_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/list_image"
+        android:layout_below="@id/list_gen_name"
+        android:layout_marginTop="2dp"
+        android:text="Color"
+        android:textSize="15dp"
+        android:textStyle="normal">
+    </TextView>
 </RelativeLayout>

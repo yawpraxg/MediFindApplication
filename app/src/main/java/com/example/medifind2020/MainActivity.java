@@ -3,10 +3,8 @@ package com.example.medifind2020;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-<<<<<<< HEAD
 
 import android.content.Intent;
-=======
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -18,7 +16,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
->>>>>>> master
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
