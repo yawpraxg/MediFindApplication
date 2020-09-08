@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ACTION_IMAGE_CAPTURE && resultCode == RESULT_OK ){
+        if(requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK && data != null ){
             Bundle extras = data.getExtras();
             Bitmap imageBitmapCamera = (Bitmap) extras.get("data");
             imageBitmapCamera = Bitmap.createScaledBitmap(imageBitmapCamera, INPUT_SIZE, INPUT_SIZE, false);
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         return image;
 
     }
-
+    //Crop
     private void openCameraIntent(){
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "New Picture");
