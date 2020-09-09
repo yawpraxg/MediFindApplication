@@ -1,13 +1,10 @@
 package com.example.medifind2020;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 
-
-import android.content.Intent;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,7 +12,6 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -24,20 +20,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -170,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         fab_three.animate().translationY(translationYaxis).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
     }
     private void openSearch() {
-        Intent intent = new Intent(this, Search.class);
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 

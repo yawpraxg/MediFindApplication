@@ -11,13 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ShowResult"></activity>
-        <activity android:name=".Search" />
-        <activity android:name=".GalleryImage"></activity>
-
-
-        <activity android:name=".ShowResult"></activity>
-        <activity android:name=".Search" />
-
+        <activity android:name=".SearchActivity" />
         <activity android:name=".GalleryImage"></activity>
 
         <activity android:name=".MainActivity">
