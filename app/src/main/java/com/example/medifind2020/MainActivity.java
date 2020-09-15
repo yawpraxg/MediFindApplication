@@ -171,9 +171,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //Uri imageData = data.getData();
         if(requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK && data != null ){
             Bundle extras = data.getExtras();
             Bitmap imageBitmapCamera = (Bitmap) extras.get("data");
+            //Bitmap imageBitmapCamera = MediaStore.Images.Media.getContentUri(MainActivity.this.getContentResolver(), imageData);
             imageBitmapCamera = Bitmap.createScaledBitmap(imageBitmapCamera, INPUT_SIZE, INPUT_SIZE, false);
 
             Intent intent = new Intent(MainActivity.this, GalleryImage.class);
@@ -212,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
         return image;
 
     }
-    //Crop
+    //Crop??
     private void openCameraIntent(){
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "New Picture");
