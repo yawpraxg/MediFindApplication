@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GalleryImage">
+    tools:context=".CameraImage">
     <ImageView
-        android:id="@+id/show_image_gallery"
+        android:id="@+id/show_image_camera"
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_marginStart="8dp"
@@ -18,15 +18,15 @@
     </ImageView>
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/button_back_cm"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="440dp"
-        android:text="Choose again" />
+        android:text="Snap again" />
 
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/button_next_cm"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="240dp"

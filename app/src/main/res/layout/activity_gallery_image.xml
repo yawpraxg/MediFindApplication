@@ -18,15 +18,15 @@
     </ImageView>
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/button_back_gl"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="440dp"
         android:text="Choose again" />
 
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/button_next_gl"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="240dp"
