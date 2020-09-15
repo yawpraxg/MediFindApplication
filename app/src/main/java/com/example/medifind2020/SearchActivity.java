@@ -2,24 +2,23 @@ package com.example.medifind2020;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,7 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     private ArrayList<MedItem> medItems = new ArrayList<>();
 
     private SearchView searchView;
-    private EditText editText;
+    private TextView noItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,28 +46,8 @@ public class SearchActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recycler_view);
         searchView = findViewById(R.id.search_view);
+        noItem = findViewById(R.id.no_item);
 
-//        //Query
-//        Query query = firebaseFirestore.getInstance().collection("Med_des");
-//
-//        //RecyclerOptions
-//        FirestoreRecyclerOptions<List> options = new FirestoreRecyclerOptions.Builder<List>().setQuery(query, List.class).build();
-
-//        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<List, ListHolder>(options) {
-//            @NonNull
-//            @Override
-//            public ListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout, parent, false);
-//                return new ListHolder(view);
-//            }
-//
-//            @Override
-//            protected void onBindViewHolder(@NonNull ListHolder holder, int position, @NonNull List model) {
-//                holder.name.setText(model.getName());
-//                holder.gen_name.setText(model.getGenName());
-//                holder.color.setText(model.getColor());
-//            }
-//        };
         adapter = new MedAdapter(this, medItems);
 
         //manually get data from firestore
@@ -115,6 +94,16 @@ public class SearchActivity extends AppCompatActivity {
                 // TODO: make this work
                 adapter.setSearchKeyword(newText);
                 return false;
+            }
+        });
+
+        adapter.setOnItemClickListener(new MedAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                MedItem medItem = documentSnapshot.toObject(MedItem.class);
+                String id = documentSnapshot.getId();
+                String path = documentSnapshot.getReference().getPath();
+                Toast.makeText(SearchActivity.this, "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
             }
         });
     }
