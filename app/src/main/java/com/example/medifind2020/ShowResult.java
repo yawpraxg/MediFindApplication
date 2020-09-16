@@ -1,12 +1,15 @@
 package com.example.medifind2020;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ShowResult extends AppCompatActivity {
@@ -15,13 +18,13 @@ public class ShowResult extends AppCompatActivity {
     TextView mBrand, mGeneric, mSize, mColor, mProperties, mDosage, mSideEffects;
     ImageView image;
     FirebaseFirestore firebaseFirestore;
+//    DocumentSnapshot documentSnapshot;
+//    MedItem medItem;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        result = this.getIntent().getStringExtra("result");
         setContentView(R.layout.activity_show_result);
-
         mBrand = findViewById(R.id.brand_name_value);
         mGeneric = findViewById(R.id.generic_name_value);
         mSize = findViewById(R.id.size_value);
@@ -32,12 +35,16 @@ public class ShowResult extends AppCompatActivity {
         image = findViewById(R.id.show_result_imageResult);
 
 
+//        result = this.getIntent().getStringExtra("result");
+//        if (result != null){
+//            Toast.makeText(this, "result" +result, Toast.LENGTH_SHORT).show();
+//        }else {
+//        }
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection("Med_des");
 
-        String MedKey = getIntent().getStringExtra("MedKey");
-
-        firebaseFirestore.document("MedKey");
+        //String MedKey = getIntent().getStringExtra("MedKey");
 
 
 
