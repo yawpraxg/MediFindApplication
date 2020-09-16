@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         fab_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Gallery", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Gallery", Toast.LENGTH_SHORT).show();
                 Intent gallery = new Intent(Intent.ACTION_PICK);
                 //gallery.putExtra("resId", R.id.show_image_gallery);
                 gallery.setType("image/*");
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         fab_three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
                 openSearch();
             }
         });

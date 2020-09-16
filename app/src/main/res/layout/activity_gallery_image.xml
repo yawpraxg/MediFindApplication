@@ -12,7 +12,7 @@
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="130dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_centerHorizontal="true">
@@ -20,23 +20,25 @@
 
     <Button
         android:id="@+id/button_back_gl"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/show_image_gallery"
-        android:text="Choose again" />
+        android:background="@drawable/search_bar"
+        android:text="Choose again"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/button_next_gl"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_toRightOf="@id/button_back_gl"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/button_back_gl"
+        android:background="@drawable/search_bar"
         android:text="next"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

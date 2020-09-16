@@ -23,7 +23,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
-    private SearchActivity searchActivity;
+//    private SearchActivity searchActivity;
+//    private ShowResult showResult;
     Context c;
     ArrayList<MedItem> medItems;
     //SearchActivity search = new SearchActivity();
