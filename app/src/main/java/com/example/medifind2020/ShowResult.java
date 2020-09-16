@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ShowResult extends AppCompatActivity {
+    private String result;
 
     TextView mBrand, mGeneric, mSize, mColor, mProperties, mDosage, mSideEffects;
     ImageView image;
@@ -18,6 +19,7 @@ public class ShowResult extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        result = this.getIntent().getStringExtra("result");
         setContentView(R.layout.activity_show_result);
 
         mBrand = findViewById(R.id.brand_name_value);
@@ -36,6 +38,7 @@ public class ShowResult extends AppCompatActivity {
         String MedKey = getIntent().getStringExtra("MedKey");
 
         firebaseFirestore.document("MedKey");
+
 
 
     }

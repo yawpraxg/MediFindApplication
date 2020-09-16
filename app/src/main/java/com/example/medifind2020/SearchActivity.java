@@ -102,13 +102,24 @@ public class SearchActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new MedAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                MedItem medItem = documentSnapshot.toObject(MedItem.class);
-                String id = documentSnapshot.getId();
-                String path = documentSnapshot.getReference().getPath();
-                Toast.makeText(SearchActivity.this, "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+            public void onItemClick(MedItem medItem, int position) {
+                Intent intent = new Intent(SearchActivity.this, ShowResult.class);
+                startActivity(intent);
             }
         });
+
+//        adapter.setOnItemClickListener(new MedAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+//                MedItem medItem = documentSnapshot.toObject(MedItem.class);
+//                String id = documentSnapshot.getId();
+//                String path = documentSnapshot.getReference().getPath();
+//                Toast.makeText(SearchActivity.this, "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(SearchActivity.this, ShowResult.class );
+//                startActivity(intent);
+//            }
+//        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
