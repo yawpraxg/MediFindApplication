@@ -84,8 +84,9 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(searchActivity, ShowResult.class );
-                c.startActivity(intent);
+                if (listener != null) {
+                    listener.onItemClick(medItems.get(position), position);
+                }
             }
         });
 //        holder.view.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +139,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+        void onItemClick(MedItem medItem, int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

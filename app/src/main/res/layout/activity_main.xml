@@ -57,6 +57,10 @@
             app:backgroundTint="@color/black">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
     </LinearLayout>
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
     <RelativeLayout
         android:layout_width="match_parent"
