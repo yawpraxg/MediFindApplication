@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class MedItem {
 
-    public String name, gen_name, color, size, prop, dosage, side_eff, image;
+    public String name, gen_name, color, size, prop, dosage, side_eff, thumbnail;
 
     public MedItem() { }
 
-    public MedItem(String name, String gen_name, String color, String size, String prop, String dosage, String side_eff, String image) {
+    public MedItem(String name, String gen_name, String color, String size, String prop, String dosage, String side_eff, String thumbnail) {
         this.name = name;
         this.gen_name = gen_name;
         this.color = color;
@@ -16,7 +16,7 @@ public class MedItem {
         this.prop = prop;
         this.dosage = dosage;
         this.side_eff = side_eff;
-        this.image = image;
+        this.thumbnail = thumbnail;
     }
 
     public MedItem(Map<String, Object> map) {
@@ -28,7 +28,7 @@ public class MedItem {
             this.prop = map.get("prop").toString();
             this.dosage = map.get("dosage").toString();
             this.side_eff = map.get("side_eff").toString();
-            this.image = map.get("image").toString();
+            this.thumbnail = map.get("thumbnail").toString();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -62,8 +62,8 @@ public class MedItem {
         return side_eff;
     }
 
-    public String getImage() {
-        return image;
+    public String getThumbnail() {
+        return thumbnail;
     }
 
     public void setBrandName(String name) {
@@ -94,7 +94,7 @@ public class MedItem {
         this.side_eff = side_eff;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setThumbnail(String image) {
+        this.thumbnail = image;
     }
 }

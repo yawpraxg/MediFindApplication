@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private SearchView searchView;
     private TextView noItem;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         searchView = findViewById(R.id.search_view);
         noItem = findViewById(R.id.no_item);
+        back = findViewById(R.id.search_back);
 
         adapter = new MedAdapter(this, medItems);
 
@@ -104,6 +107,13 @@ public class SearchActivity extends AppCompatActivity {
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath();
                 Toast.makeText(SearchActivity.this, "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
