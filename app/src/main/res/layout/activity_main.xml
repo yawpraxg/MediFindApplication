@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="80dp"
             android:layout_marginBottom="100dp"
             android:layout_marginTop="175dp"
             app:cardCornerRadius="30dp">
@@ -49,7 +49,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="100dp"
                     android:text="Firstname Lastname"
-                    android:textSize="32dp"
+                    android:textSize="25dp"
                     android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
@@ -60,9 +60,9 @@
                     android:id="@+id/user_email"
                     android:layout_below="@id/user_name"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="30dp"
                     android:text="E-mail: "
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
@@ -74,9 +74,9 @@
                     android:layout_below="@id/user_name"
                     android:layout_toRightOf="@id/user_email"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:text="email@mail.com"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="normal"
                     android:textColor="@color/black">
                 </TextView>
@@ -87,9 +87,9 @@
                     android:id="@+id/user_phone"
                     android:layout_below="@id/user_email"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="30dp"
                     android:text="Phone: "
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
@@ -101,9 +101,9 @@
                     android:layout_below="@id/user_email"
                     android:layout_toRightOf="@id/user_phone"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:text="+661234578"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="normal"
                     android:textColor="@color/black">
                 </TextView>
@@ -114,9 +114,9 @@
                     android:id="@+id/user_status"
                     android:layout_below="@id/user_phone"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="30dp"
                     android:text="Status: "
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
@@ -128,9 +128,9 @@
                     android:layout_below="@id/user_phone"
                     android:layout_toRightOf="@id/user_status"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:text="status"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     android:textStyle="italic"
                     android:textColor="@color/black">
                 </TextView>

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -33,6 +34,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
+    private DocumentReference documentReference;
 
     private MedAdapter adapter;
     private ArrayList<MedItem> medItems = new ArrayList<>();
@@ -47,10 +49,14 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
+        documentReference = firebaseFirestore.collection("Med_des").getParent();
+
         recyclerView = findViewById(R.id.recycler_view);
         searchView = findViewById(R.id.search_view);
         noItem = findViewById(R.id.no_item);
         back = findViewById(R.id.search_back);
+
+        TextView brand = findViewById(R.id.brand_name_value);
 
         adapter = new MedAdapter(this, medItems);
 
@@ -68,7 +74,9 @@ public class SearchActivity extends AppCompatActivity {
                             // process the result from firebase, put into the 'result' ArrayList
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> rawData = document.getData();
-                                medItems.add(new MedItem(rawData));
+                                String id = document.getId();
+
+                                medItems.add(new MedItem(rawData, id));
                                 Log.d(TAG, document.getId() + " => " + document.getData().keySet().toString());
                             }
 
@@ -106,8 +114,9 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(MedItem medItem, int position) {
                 String name = medItem.getName();
-                Toast.makeText(SearchActivity.this, "Position " + position + " ID: " + name, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SearchActivity.this, "Position " + position + " ID: " + name, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SearchActivity.this, ShowResult.class);
+                intent.putExtra("MedKey", medItem.id);
                 startActivity(intent);
             }
         });

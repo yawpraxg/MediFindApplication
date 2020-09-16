@@ -1,10 +1,15 @@
 package com.example.medifind2020;
 
+import android.util.Log;
+
+import java.util.Arrays;
 import java.util.Map;
 
 public class MedItem {
-
+    public String id;
     public String name, gen_name, color, size, prop, dosage, side_eff, thumbnail;
+
+
 
     public MedItem() { }
 
@@ -19,8 +24,9 @@ public class MedItem {
         this.thumbnail = thumbnail;
     }
 
-    public MedItem(Map<String, Object> map) {
+    public MedItem(Map<String, Object> map, String id) {
         try {
+            this.id = id;
             this.name = map.get("name").toString();
             this.gen_name = map.get("gen_name").toString();
             this.color = map.get("color").toString();
@@ -29,6 +35,8 @@ public class MedItem {
             this.dosage = map.get("dosage").toString();
             this.side_eff = map.get("side_eff").toString();
             this.thumbnail = map.get("thumbnail").toString();
+
+            Log.d("MedItem", Arrays.toString(map.keySet().toArray()));
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

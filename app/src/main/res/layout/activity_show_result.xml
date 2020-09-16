@@ -21,16 +21,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <ImageView
                 android:id="@+id/show_result_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginBottom="5dp"
                 android:outlineProvider="none"
                 android:background="@drawable/ic_baseline_arrow_back_ios_24">
-            </Button>
+            </ImageView>
 
             <ImageView
                 android:id="@+id/show_result_imageResult"
