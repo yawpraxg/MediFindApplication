@@ -29,12 +29,14 @@ public class ShowResult extends AppCompatActivity {
         mSideEffects = findViewById(R.id.side_effects_value);
         image = findViewById(R.id.show_result_imageResult);
 
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection("Med_des");
 
         String MedKey = getIntent().getStringExtra("MedKey");
 
         firebaseFirestore.document("MedKey");
+
 
     }
 }
