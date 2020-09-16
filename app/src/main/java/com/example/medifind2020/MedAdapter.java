@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
         holder.name.setText(filteredMedItems.get(position).getName());
         holder.gen_name.setText(filteredMedItems.get(position).getGenName());
         holder.color.setText(filteredMedItems.get(position).getColor());
+        Picasso.get().load(filteredMedItems.get(position).getThumbnail()).into(holder.thumbnail);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +113,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
         public TextView name;
         public TextView gen_name;
         public TextView color;
-        public ImageView image;
+        public ImageView thumbnail;
         View view;
 
         public ListHolder(@NonNull View itemView) {
@@ -120,7 +122,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
             this.name = itemView.findViewById(R.id.list_brand_name);
             this.gen_name = itemView.findViewById(R.id.list_gen_name);
             this.color = itemView.findViewById(R.id.list_color);
-            this.image = itemView.findViewById(R.id.list_image);
+            this.thumbnail = itemView.findViewById(R.id.list_image);
             view = itemView;
 
 //            itemView.setOnClickListener(new View.OnClickListener() {

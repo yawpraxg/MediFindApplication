@@ -22,14 +22,20 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/show_image_gallery"
         android:text="Choose again" />
 
     <Button
         android:id="@+id/button_next_gl"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="440dp"
-        android:text="next" />
+        android:layout_toRightOf="@id/button_back_gl"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/button_back_gl"
+        android:text="next"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
