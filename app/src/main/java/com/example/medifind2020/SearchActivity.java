@@ -107,6 +107,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(MedItem medItem, int position) {
                 String name = medItem.getName();
                 Toast.makeText(SearchActivity.this, "Position " + position + " ID: " + name, Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(SearchActivity.this, ShowResult.class);
                 startActivity(intent);
             }
