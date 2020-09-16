@@ -15,6 +15,7 @@ public class ShowResult extends AppCompatActivity {
     TextView mBrand, mGeneric, mSize, mColor, mProperties, mDosage, mSideEffects;
     ImageView image;
     FirebaseFirestore firebaseFirestore;
+    MedItem medItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,6 @@ public class ShowResult extends AppCompatActivity {
         String MedKey = getIntent().getStringExtra("MedKey");
 
         firebaseFirestore.document("MedKey");
-
-
 
     }
 }
