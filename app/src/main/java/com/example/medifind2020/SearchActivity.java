@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,6 +59,7 @@ public class SearchActivity extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     String TAG = "FirestoreDebug";
+
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -103,9 +105,8 @@ public class SearchActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new MedAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(MedItem medItem, int position) {
-                String id = medItem.getName();
-                Toast.makeText(SearchActivity.this, "Position" + position + " ID: " + id, Toast.LENGTH_SHORT).show();
-
+                String name = medItem.getName();
+                Toast.makeText(SearchActivity.this, "Position " + position + " ID: " + name, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SearchActivity.this, ShowResult.class);
                 startActivity(intent);
             }
