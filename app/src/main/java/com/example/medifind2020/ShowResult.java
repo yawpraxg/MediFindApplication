@@ -19,7 +19,7 @@ public class ShowResult extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        result = this.getIntent().getStringExtra("result");
+//        result = this.getIntent().getStringExtra("result");
         setContentView(R.layout.activity_show_result);
 
         mBrand = findViewById(R.id.brand_name_value);

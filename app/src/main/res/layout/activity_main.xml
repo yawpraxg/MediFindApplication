@@ -57,10 +57,6 @@
             app:backgroundTint="@color/black">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
     </LinearLayout>
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,8 +65,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:cardCornerRadius="100dp">
+            android:layout_centerHorizontal="true">
 
             <ImageView
                 android:layout_width="wrap_content"

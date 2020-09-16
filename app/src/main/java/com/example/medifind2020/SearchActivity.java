@@ -103,6 +103,9 @@ public class SearchActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new MedAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(MedItem medItem, int position) {
+                String id = medItem.getName();
+                Toast.makeText(SearchActivity.this, "Position" + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(SearchActivity.this, ShowResult.class);
                 startActivity(intent);
             }
