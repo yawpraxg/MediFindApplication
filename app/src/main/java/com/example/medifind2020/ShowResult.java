@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,48 +18,37 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-=======
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
->>>>>>> master
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-<<<<<<< HEAD
 
 import java.util.ResourceBundle;
-=======
 import com.google.firebase.firestore.SnapshotMetadata;
 import com.squareup.picasso.Picasso;
->>>>>>> master
 
 public class ShowResult extends AppCompatActivity {
     private String result;
     DatabaseReference reff;
 
     TextView mBrand, mGeneric, mSize, mColor, mProperties, mDosage, mSideEffects;
-<<<<<<< HEAD
-    ImageView image;
-    FirebaseAuth fAuth;
+    ImageView image, back;
     FirebaseFirestore firebaseFirestore;
     String userId;
     //private Context documentSnapshot;
     //private ResourceBundle documentSnapshot;
-
-=======
-    ImageView image, back;
-    FirebaseFirestore firebaseFirestore;
     CollectionReference ref;
     MedItem medItem;
->>>>>>> master
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Med_des");
+        //firebaseFirestore = FirebaseFirestore.getInstance();
+        //firebaseFirestore.collection("Med_des");
 
         setContentView(R.layout.activity_show_result);
         mBrand = findViewById(R.id.brand_name_value);
@@ -71,31 +59,7 @@ public class ShowResult extends AppCompatActivity {
         mDosage = findViewById(R.id.dosage_value);
         mSideEffects = findViewById(R.id.side_effects_value);
         image = findViewById(R.id.show_result_imageResult);
-<<<<<<< HEAD
 
-        fAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        //userId = fAuth.getCurrentUser().getUid();
-        FirebaseFirestore m = fAuth.getCurrentUser();
-        if(m != null){
-            userId = m.getUid();
-        }
-        final DocumentReference documentReference = firebaseFirestore.collection("Med_des").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            //private ResourceBundle documentSnapshot;
-
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                mBrand.setText(documentSnapshot.getString("name"));
-                mGeneric.setText(documentSnapshot.getString("gen_name"));
-                mSize.setText(documentSnapshot.getString("size"));
-                mColor.setText(documentSnapshot.getString("color"));
-                mProperties.setText(documentSnapshot.getString("prop"));
-                mDosage.setText(documentSnapshot.getString("dosage"));
-                mSideEffects.setText(documentSnapshot.getString("side_eff"));
-
-            }
-        });
 
 
 //        reff = FirebaseDatabase.getInstance().getReference().child("Member").child("l");
@@ -125,9 +89,7 @@ public class ShowResult extends AppCompatActivity {
 //            }
 //        });
 
-=======
         back = findViewById(R.id.show_result_back);
->>>>>>> master
 
 //        result = this.getIntent().getStringExtra("result");
 //        if (result != null){
@@ -135,8 +97,7 @@ public class ShowResult extends AppCompatActivity {
 //        }else {
 //        }
 
-<<<<<<< HEAD
-=======
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         ref = firebaseFirestore.collection("Med_des");
 
@@ -174,7 +135,6 @@ public class ShowResult extends AppCompatActivity {
             }
         });
 
->>>>>>> master
 
 
         //String MedKey = getIntent().getStringExtra("MedKey");
