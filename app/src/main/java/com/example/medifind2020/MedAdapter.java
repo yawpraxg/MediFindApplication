@@ -17,17 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
 
 public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
-//    private SearchActivity searchActivity;
-//    private ShowResult showResult;
+
+    //89 days - 10032020
+
     Context c;
     ArrayList<MedItem> medItems;
-    //SearchActivity search = new SearchActivity();
     OnItemClickListener listener;
 
     public void setMedItems(ArrayList<MedItem> medItems) {
@@ -55,6 +56,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
                         l.gen_name.toLowerCase().contains(newKeyword) ||
                         l.color.toLowerCase().contains(newKeyword)) {
                     filteredMedItems.add(l);
+                    
                 }
             }
         }
@@ -65,7 +67,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
 
     public MedAdapter(Context c, ArrayList<MedItem> medItems) {
         this.c = c;
-        this.medItems = medItems;
+        this.medItems = medItems; // all
         //this.listener = listener;
     }
 
@@ -78,15 +80,21 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ListHolder holder, final int position) {
+
         holder.name.setText(filteredMedItems.get(position).getName());
         holder.gen_name.setText(filteredMedItems.get(position).getGenName());
         holder.color.setText(filteredMedItems.get(position).getColor());
+//        holder.showPosition.setText("Position : " + position);
+//        holder.showId.setText("ID : " + filteredMedItems.get(position).getId());
         Picasso.get().load(filteredMedItems.get(position).getThumbnail()).into(holder.thumbnail);
+
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onItemClick(medItems.get(position), position);
+                    listener.onItemClick(filteredMedItems.get(position), position);
+//                    Log.d("Position", "Position => " + position);
+//                    Toast.makeText(c, filteredMedItems.get(position).getName(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -116,6 +124,8 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
         public TextView gen_name;
         public TextView color;
         public ImageView thumbnail;
+        public TextView showPosition;
+        public TextView showId;
         View view;
 
         public ListHolder(@NonNull View itemView) {
@@ -125,6 +135,8 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ListHolder> {
             this.gen_name = itemView.findViewById(R.id.list_gen_name);
             this.color = itemView.findViewById(R.id.list_color);
             this.thumbnail = itemView.findViewById(R.id.list_image);
+//            this.showPosition = itemView.findViewById(R.id.list_position);
+//            this.showId = itemView.findViewById(R.id.list_id);
             view = itemView;
 
 //            itemView.setOnClickListener(new View.OnClickListener() {
