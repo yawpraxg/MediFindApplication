@@ -111,9 +111,9 @@ public class ShowResult extends AppCompatActivity {
                     String gen_name = value.get("gen_name").toString();
                     String color = value.get("color").toString();
                     String size = value.get("size").toString();
-                    String properties = value.get("prop").toString();
-                    String dosage = value.get("dosage").toString();
-                    String side_eff = value.get("side_eff").toString();
+                    String properties = "     " + value.get("prop").toString();
+                    String dosage = "     " + value.get("dosage").toString();
+                    String side_eff = "     " + value.get("side_eff").toString();
                     String imageURL = value.get("thumbnail").toString();
 
                     mBrand.setText(name);

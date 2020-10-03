@@ -49,4 +49,30 @@
         android:textSize="15dp"
         android:textStyle="normal">
     </TextView>
+
+<!--    <TextView-->
+<!--        android:id="@+id/list_position"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/list_gen_name"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:text="position"-->
+<!--        android:textSize="15dp"-->
+<!--        android:textStyle="italic">-->
+<!--    </TextView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/list_id"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/list_position"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:text="id"-->
+<!--        android:textSize="15dp"-->
+<!--        android:textStyle="italic">-->
+<!--    </TextView>-->
 </RelativeLayout>

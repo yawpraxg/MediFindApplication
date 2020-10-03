@@ -105,4 +105,12 @@ public class MedItem {
     public void setThumbnail(String image) {
         this.thumbnail = image;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
