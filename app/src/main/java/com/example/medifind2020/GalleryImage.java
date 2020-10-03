@@ -10,9 +10,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 public class GalleryImage extends AppCompatActivity {
+    private
     private Bitmap bitmap;
     private ImageView imageView;
-    private String command;
+    private String command
     private int INPUT_SIZE = 200;
     private Uri image;
     private String result;
