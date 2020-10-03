@@ -7,13 +7,17 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import com.android.volley.RequestQueue;
+
 public class GalleryImage extends AppCompatActivity {
-    private
+    private RequestQueue mQueue;
     private Bitmap bitmap;
     private ImageView imageView;
-    private String command
+    private String command;
     private int INPUT_SIZE = 200;
     private Uri image;
     private String result;
@@ -27,6 +31,18 @@ public class GalleryImage extends AppCompatActivity {
         imageView = findViewById(R.id.show_image_gallery);
         imageView.setImageBitmap(bitmap);
         result = null;
+        mTextViewResul = findViewById(R.id. );
+        Button buttonNext = findViewById(R.id.button_next_gl);
+        buttonNext.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //return false;
+                jsonParse();
+            }
+        });
+    }
+    private void jsonParse(){
+        String url ="";
     }
     //ImageView i1;
 
