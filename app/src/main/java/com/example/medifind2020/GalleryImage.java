@@ -39,6 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+<<<<<<< Updated upstream
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -51,6 +52,8 @@ import java.util.logging.Logger;
 
 import okhttp3.OkHttpClient;
 
+=======
+>>>>>>> Stashed changes
 public class GalleryImage extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
