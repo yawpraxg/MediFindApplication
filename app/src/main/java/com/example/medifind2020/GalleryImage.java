@@ -10,10 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
-public class GalleryImage extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class GalleryImage extends AppCompatActivity {\
+    private TextView mTextViewResult;
     private RequestQueue mQueue;
     private Bitmap bitmap;
     private ImageView imageView;
@@ -31,18 +41,33 @@ public class GalleryImage extends AppCompatActivity {
         imageView = findViewById(R.id.show_image_gallery);
         imageView.setImageBitmap(bitmap);
         result = null;
-        mTextViewResul = findViewById(R.id. );
-        Button buttonNext = findViewById(R.id.button_next_gl);
-        buttonNext.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                //return false;
-                jsonParse();
-            }
-        });
-    }
-    private void jsonParse(){
-        String url ="";
+
+//        mTextViewResult = findViewById(R.id.ranking);
+//        Button buttonNext = findViewById(R.id.button_next_gl);
+//        mQueue = Volley.newRequestQueue(this);
+//        buttonNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                jsonParse();
+//            }
+//        });
+//    }
+//    private void jsonParse(){
+//        String url ="";
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        JSONArray jsonArray = response.getJSONArray("");
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
+//            }
+//        });
+
     }
     //ImageView i1;
 
