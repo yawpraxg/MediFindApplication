@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -41,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -51,11 +52,15 @@ import java.net.URL;
 import java.util.logging.Logger;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+
 
 public class GalleryImage extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
     private Bitmap bitmap;
+    private Button btnBack, btnNext;
     private ImageView imageView;
     private String command;
     private int INPUT_SIZE = 200;
@@ -78,6 +83,8 @@ public class GalleryImage extends AppCompatActivity {
         bitmap  = this.getIntent().getParcelableExtra("photo");
         imageView = findViewById(R.id.show_image_gallery);
         imageView.setImageBitmap(bitmap);
+        btnNext = findViewById(R.id.button_next_gl);
+
         result = null;
         log.info("testtest");
         sendAndRequestResponse();
@@ -146,8 +153,46 @@ public class GalleryImage extends AppCompatActivity {
 
         mRequestQueue.add(mStringRequest);
     }
- 
-//        });
+
+    public void setBtnNext(Button btnNext) {
+        this.btnNext = btnNext;
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+            }
+        });
+    }
+
+    private void uploadImage() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
+        byte[] imageInByte = byteArrayOutputStream.toByteArray();
+
+        String encodeImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
+
+        Call<ResponsePOJO> call = RetroClient.getInstance().getApi().uploadImage(encodeImage);
+        call.enqueue(new Callback<ResponsePOJO>() {
+            @Override
+            public void onResponse(Call<ResponsePOJO> call, retrofit2.Response<ResponsePOJO> response) {
+                Toast.makeText(GalleryImage.this, response.body().getRemark(), Toast.LENGTH_SHORT).show();
+
+                if(response.body().isStatus()){
+
+                }else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsePOJO> call, Throwable t) {
+                Toast.makeText(GalleryImage.this, "Network Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        //Toast.makeText(this, encodeImage, Toast.LENGTH_SHORT).show();
+    }
+    //        });
 
 //        thread.start();
 //    }
