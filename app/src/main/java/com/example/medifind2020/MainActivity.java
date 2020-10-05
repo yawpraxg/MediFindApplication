@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 //gallery.putExtra("resId", R.id.show_image_gallery);
                 gallery.setType("image/*");
                 gallery.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(gallery,"Gallery"), GALLERY_REQUEST_CODE);
+                startActivityForResult(Intent .createChooser(gallery,"Gallery"), GALLERY_REQUEST_CODE);
             }
         });
         fab_three.setOnClickListener(new View.OnClickListener() {

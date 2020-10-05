@@ -52,6 +52,8 @@ import java.net.URL;
 import java.util.logging.Logger;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 
 public class GalleryImage extends AppCompatActivity {
@@ -168,7 +170,27 @@ public class GalleryImage extends AppCompatActivity {
         byte[] imageInByte = byteArrayOutputStream.toByteArray();
 
         String encodeImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
-        Toast.makeText(this, encodeImage, Toast.LENGTH_SHORT).show();
+
+        Call<ResponsePOJO> call = RetroClient.getInstance().getApi().uploadImage(encodeImage);
+        call.enqueue(new Callback<ResponsePOJO>() {
+            @Override
+            public void onResponse(Call<ResponsePOJO> call, retrofit2.Response<ResponsePOJO> response) {
+                Toast.makeText(GalleryImage.this, response.body().getRemark(), Toast.LENGTH_SHORT).show();
+
+                if(response.body().isStatus()){
+
+                }else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsePOJO> call, Throwable t) {
+                Toast.makeText(GalleryImage.this, "Network Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        //Toast.makeText(this, encodeImage, Toast.LENGTH_SHORT).show();
     }
     //        });
 
