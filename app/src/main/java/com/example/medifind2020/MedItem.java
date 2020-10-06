@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class MedItem {
     public String id;
-    public String name, gen_name, color, size, prop, dosage, side_eff, thumbnail;
+    public String name, gen_name, color, size, prop, dosage,side_eff, thumbnail;
 
 
 
