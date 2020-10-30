@@ -73,7 +73,7 @@ public class GalleryImage extends AppCompatActivity {
                 progressDialog = new ProgressDialog(GalleryImage.this);
                 progressDialog.setMessage("Uploading, please wait...");
                 progressDialog.show();
-                sendLeave();
+//                sendLeave();
             }
         });
 //        btnNext.setOnClickListener(new View.OnClickListener() {
@@ -451,55 +451,55 @@ public class GalleryImage extends AppCompatActivity {
 //            }
 //        });
 //    }
-public void sendLeave(){
-    progressDialog.show();
-    MultipartRequest multipartRequest = new MultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
-        @Override
-        public void onResponse(NetworkResponse response) {
-            Log.d("Status", "Successful");
-        }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.d("Status", "Error");
-        }
-    }){
-        @Override
-        protected Map<String, String> getParams() throws AuthFailureError {
-            Map<String,String> params = new HashMap<>();
-//            params.put("parent_id", SharedPreferenceManager.getmInstance(getActivity()).getID());
-//            params.put("student_id",studentid);
-//            params.put("reason",txtReason.getText().toString());
-//            params.put("start_date",txtFromDate.getText().toString());
-//            params.put("end_date",txtToDate.getText().toString());
-
-//            int i=0;
-//            for (String temp: teacherid){
-//                params.put("teacher_id["+(i++)+"]", temp);
+//public void sendLeave(){
+//    progressDialog.show();
+//    MultipartRequest multipartRequest = new MultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
+//        @Override
+//        public void onResponse(NetworkResponse response) {
+//            Log.d("Status", "Successful");
+//        }
+//    }, new Response.ErrorListener() {
+//        @Override
+//        public void onErrorResponse(VolleyError error) {
+//            Log.d("Status", "Error");
+//        }
+//    }){
+//        @Override
+//        protected Map<String, String> getParams() throws AuthFailureError {
+//            Map<String,String> params = new HashMap<>();
+////            params.put("parent_id", SharedPreferenceManager.getmInstance(getActivity()).getID());
+////            params.put("student_id",studentid);
+////            params.put("reason",txtReason.getText().toString());
+////            params.put("start_date",txtFromDate.getText().toString());
+////            params.put("end_date",txtToDate.getText().toString());
+//
+////            int i=0;
+////            for (String temp: teacherid){
+////                params.put("teacher_id["+(i++)+"]", temp);
+////            }
+//            return params;
+//        }
+//
+//        @Override
+//        protected Map<String, MultipartRequest.DataPart> getByteData() {
+//            Map<String, MultipartRequest.DataPart> params = new HashMap<>();
+//
+//            params.put("img", new MultipartRequest.DataPart());
+//            return params;
+//        }
+//
+//        @Override
+//        public Map<String, String> getHeaders() throws AuthFailureError {
+//            Map<String,String> headers = super.getHeaders();
+//            if (headers == null || headers.equals(Collections.<String, String>emptyMap())){
+//                headers = new HashMap<String, String>();
 //            }
-            return params;
-        }
-
-        @Override
-        protected Map<String, MultipartRequest.DataPart> getByteData() {
-            Map<String, MultipartRequest.DataPart> params = new HashMap<>();
-
-            params.put("img", new MultipartRequest.DataPart());
-            return params;
-        }
-
-        @Override
-        public Map<String, String> getHeaders() throws AuthFailureError {
-            Map<String,String> headers = super.getHeaders();
-            if (headers == null || headers.equals(Collections.<String, String>emptyMap())){
-                headers = new HashMap<String, String>();
-            }
-//            MyApp.get().addSessionCookie(headers);
-            return headers;
-        }
-    };
+////            MyApp.get().addSessionCookie(headers);
+//            return headers;
+//        }
+//    };
 //    RequestQueue queue = Volley.newRequestQueue(getContext());
 //    queue.add(multipartRequest);
 }
-}
+
 
