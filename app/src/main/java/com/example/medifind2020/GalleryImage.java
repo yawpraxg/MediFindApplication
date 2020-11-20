@@ -44,7 +44,7 @@ public class GalleryImage extends AppCompatActivity {
     // The first url is mocking api.
     // The second the real api from python
     //private String url = "https://jsonplaceholder.typicode.com/posts";
-    private String url = "http://10.17.250.83:5000/upload";
+    private String url = "https://medifindapi.herokuapp.com/predict";
 
     ProgressDialog progressDialog;
 
@@ -376,7 +376,7 @@ public class GalleryImage extends AppCompatActivity {
 //    }
 
 
-//////////////////////////////////Volley///////////////////////////
+//////////////////////////////////Volley///////////////////////////////////
 //
 //        private void sendAndRequestResponse () {
 //            final String tags = "image";
@@ -490,7 +490,7 @@ public class GalleryImage extends AppCompatActivity {
 //
 //        @Override
 //        public Map<String, String> getHeaders() throws AuthFailureError {
-//            Map<String,String> headers = super.getHeaders();
+//            Ma p<String,String> headers = super.getHeaders();
 //            if (headers == null || headers.equals(Collections.<String, String>emptyMap())){
 //                headers = new HashMap<String, String>();
 //            }
