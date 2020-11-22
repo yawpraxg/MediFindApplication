@@ -1,8 +1,5 @@
 package com.example.medifind2020;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,7 +22,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.util.Collections;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -61,7 +64,8 @@ public class GalleryImage extends AppCompatActivity {
         btnNext = findViewById(R.id.button_next_gl);
 
         result = null;
-        //log.info("testtest");
+        System.out.println("testtest");
+
 
         mTextViewResult = findViewById(R.id.ranking);
         mQueue = Volley.newRequestQueue(this);
@@ -69,10 +73,12 @@ public class GalleryImage extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                sendAndRequestResponse(); //Volley Mild
+                        System.out.println("Start Onclick");
+
+                        sendAndRequestResponse(bitmap); //Volley Mild
                 progressDialog = new ProgressDialog(GalleryImage.this);
-                progressDialog.setMessage("Uploading, please wait...");
-                progressDialog.show();
+//                progressDialog.setMessage("Uploading, please wait...");
+//                progressDialog.show();
 //                sendLeave();
             }
         });
@@ -378,35 +384,54 @@ public class GalleryImage extends AppCompatActivity {
 
 //////////////////////////////////Volley///////////////////////////////////
 //
-//        private void sendAndRequestResponse () {
-//            final String tags = "image";
-//            String url = "http://10.17.250.83:5000/upload";
-////            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
-////                    new Response.Listener<NetworkResponse>() {
-//                    //RequestQueue initialized
-//            mRequestQueue = Volley.newRequestQueue(this);
-////
-////            //String Request initialized
-//            mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        private void sendAndRequestResponse (final Bitmap bitma) {
+// ref na pai do saaaa: https://www.maxester.com/blog/2019/10/04/upload-file-image-to-the-server-using-volley-in-android/
+            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
+                    new Response.Listener<NetworkResponse>() {
+                        @Override
+                        public void onResponse(NetworkResponse response) {
+                            try {
+                                JSONObject obj = new JSONObject(new String(response.data));
+                                System.out.println(obj.toString());
+                                if (obj.get("result") != null) {
+                                    // TODO call process after get name
+                                    Toast.makeText(getApplicationContext(), obj.getString("result"), Toast.LENGTH_SHORT).show();
+                                } else if("error" != null){
+                                    //TODO process after get error No file
+                                    Toast.makeText(getApplicationContext(), obj.getString("error"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.e("GotError",""+error.getMessage());
+                        }
+                    }) {
 //
-//                @Override
-//                public void onResponse(String response) {
-//                    log.info("Success wa 55555555555");
-//                    log.info(response);
 //
-//                    Toast.makeText(getApplicationContext(), "Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
-//
-//                }
-//            }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    log.info("Got into errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-//                    System.out.println(error.getMessage());
-//                }
-//            });
-//            mRequestQueue.add(mStringRequest);
-//     }
+                @Override
+                protected Map<String, DataPart> getByteData() {
+                    Map<String, DataPart> params = new HashMap<>();
+                    long imagename = System.currentTimeMillis();
+                    params.put("image", new DataPart(imagename + ".jpg", getFileDataFromDrawable(bitma)));
+                    return params;
+                }
+            };
 
+            //adding the request to volley
+            Volley.newRequestQueue(this).add(volleyMultipartRequest);
+        }
+
+    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
     //private class VolleyMultipartRequest {
 
 
