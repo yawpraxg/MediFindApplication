@@ -1,6 +1,7 @@
 package com.example.medifind2020;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -48,6 +50,7 @@ public class GalleryImage extends AppCompatActivity {
     // The second the real api from python
     //private String url = "https://jsonplaceholder.typicode.com/posts";
     private String url = "https://medifindapi.herokuapp.com/predict";
+    private ArrayList<MedItem> medItems = new ArrayList<>();
 
     ProgressDialog progressDialog;
 
@@ -76,7 +79,9 @@ public class GalleryImage extends AppCompatActivity {
                         System.out.println("Start Onclick");
 
                         sendAndRequestResponse(bitmap); //Volley Mild
-                progressDialog = new ProgressDialog(GalleryImage.this);
+                        progressDialog = new ProgressDialog(GalleryImage.this);
+//                Intent intent = new Intent(GalleryImage.this, ShowResult.class);
+//                startActivity(intent);
 //                progressDialog.setMessage("Uploading, please wait...");
 //                progressDialog.show();
 //                sendLeave();
@@ -396,6 +401,11 @@ public class GalleryImage extends AppCompatActivity {
                                 if (obj.get("result") != null) {
                                     // TODO call process after get name
                                     Toast.makeText(getApplicationContext(), obj.getString("result"), Toast.LENGTH_SHORT).show();
+                                    if (obj.get("result") != null) {
+                                        Intent intent = new Intent(GalleryImage.this, ShowResult.class);
+                                        intent.putExtra("MedKey", obj.getString("result"));
+                                        startActivity(intent);
+                                    }
                                 } else if("error" != null){
                                     //TODO process after get error No file
                                     Toast.makeText(getApplicationContext(), obj.getString("error"), Toast.LENGTH_SHORT).show();
@@ -409,7 +419,7 @@ public class GalleryImage extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                            Log.e("GotError",""+error.getMessage());
+                            Log.e("GotError","No result"+error.getMessage());
                         }
                     }) {
 //
