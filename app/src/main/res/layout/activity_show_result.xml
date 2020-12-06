@@ -135,6 +135,18 @@
                                 </TextView>
 
                                 <TextView
+                                    android:id="@+id/size_unit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black"
+                                    android:layout_below="@id/generic_name_value"
+                                    android:layout_toRightOf="@id/size_value"
+                                    android:layout_marginTop="5dp"
+                                    android:text=" mm"
+                                    android:textSize="16dp">
+                                </TextView>
+
+                                <TextView
                                     android:id="@+id/color"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
