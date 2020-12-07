@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,9 +29,12 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import com.google.firebase.firestore.SnapshotMetadata;
 import com.squareup.picasso.Picasso;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
 
 public class ShowResult extends AppCompatActivity {
     private String result;
@@ -43,6 +48,8 @@ public class ShowResult extends AppCompatActivity {
     //private ResourceBundle documentSnapshot;
     CollectionReference ref;
     MedItem medItem;
+
+    private int[] mImages;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,37 +65,7 @@ public class ShowResult extends AppCompatActivity {
         mProperties = findViewById(R.id.properties_value);
         mDosage = findViewById(R.id.dosage_value);
         mSideEffects = findViewById(R.id.side_effects_value);
-        image = findViewById(R.id.show_result_imageResult);
-
-
-
-//        reff = FirebaseDatabase.getInstance().getReference().child("Member").child("l");
-//        reff.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String brand = dataSnapshot.child("name").getValue().toString();
-//                String generic = dataSnapshot.child("gen_name").getValue().toString();
-//                String size = dataSnapshot.child("size").getValue().toString();
-//                String color = dataSnapshot.child("color").getValue().toString();
-//                String prop = dataSnapshot.child("prop").getValue().toString();
-//                String dosag = dataSnapshot.child("dosage").getValue().toString();
-//                String sideff = dataSnapshot.child("side_eff").getValue().toString();
-//                String image = dataSnapshot.child("image").getValue().toString();
-//                mBrand.setText(brand);
-//                mGeneric.setText(generic);
-//                mSize.setText(size);
-//                mColor.setText(color);
-//                mProperties.setText(prop);
-//                mDosage.setText(dosag);
-//                mSideEffects.setText(sideff);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
+        final ImageSlider imageSlider = findViewById(R.id.slider);
         back = findViewById(R.id.show_result_back);
 
 //        result = this.getIntent().getStringExtra("result");
@@ -97,24 +74,28 @@ public class ShowResult extends AppCompatActivity {
 //        }else {
 //        }
 
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         ref = firebaseFirestore.collection("Med_des");
 
         String MedKey = getIntent().getStringExtra("MedKey");
 
+//        List<String> slideModels = new ArrayList<>();
+
         ref.document(MedKey).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (value.exists()) {
+                    List<SlideModel> slideModels = new ArrayList<>();
                     String name = value.get("name").toString();
                     String gen_name = value.get("gen_name").toString();
                     String color = value.get("color").toString();
                     String size = value.get("size").toString();
-                    String properties = "     " + value.get("prop").toString();
+                    String properties = "      " + value.get("prop").toString();
                     String dosage = "     " + value.get("dosage").toString();
                     String side_eff = "     " + value.get("side_eff").toString();
                     String imageURL = value.get("thumbnail").toString();
+                    String img1 = value.get("img1").toString();
+                    String img2 = value.get("img2").toString();
 
                     mBrand.setText(name);
                     mGeneric.setText(gen_name);
@@ -123,7 +104,11 @@ public class ShowResult extends AppCompatActivity {
                     mProperties.setText(properties);
                     mDosage.setText(dosage);
                     mSideEffects.setText(side_eff);
-                    Picasso.get().load(imageURL).into(image);
+//                    Picasso.get().load(imageURL).into(image);
+                    slideModels.add(new SlideModel(imageURL, ScaleTypes.CENTER_INSIDE));
+                    slideModels.add(new SlideModel(img1, ScaleTypes.CENTER_INSIDE));
+                    slideModels.add(new SlideModel(img2, ScaleTypes.CENTER_INSIDE));
+                    imageSlider.setImageList(slideModels);
                 }
             }
         });
