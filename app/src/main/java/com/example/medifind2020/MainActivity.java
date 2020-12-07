@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         fab_one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Camera", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Camera", Toast.LENGTH_SHORT).show();
                 try {
                     Intent cameraView = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     //cameraView.setAction(MediaStore.ACTION_IMAGE_CAPTURE);

@@ -27,7 +27,7 @@
         android:layout_marginBottom="20dp"
         android:layout_below="@id/show_image_gallery"
         android:background="@drawable/search_bar"
-        android:text="Choose again"
+        android:text="BACK"
         android:layout_centerHorizontal="true"/>
 
     <Button
