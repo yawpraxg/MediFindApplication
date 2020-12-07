@@ -51,6 +51,7 @@ public class GalleryImage extends AppCompatActivity {
     //private String url = "https://jsonplaceholder.typicode.com/posts";
     private String url = "https://medifindapi.herokuapp.com/predict";
     private ArrayList<MedItem> medItems = new ArrayList<>();
+    private Button back;
 
     ProgressDialog progressDialog;
 
@@ -65,6 +66,7 @@ public class GalleryImage extends AppCompatActivity {
         imageView = findViewById(R.id.show_image_gallery);
         imageView.setImageBitmap(bitmap);
         btnNext = findViewById(R.id.button_next_gl);
+        back = findViewById(R.id.button_back_gl);
 
         result = null;
         System.out.println("testtest");
@@ -76,10 +78,10 @@ public class GalleryImage extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                        System.out.println("Start Onclick");
+                System.out.println("Start Onclick");
 
-                        sendAndRequestResponse(bitmap); //Volley Mild
-                        progressDialog = new ProgressDialog(GalleryImage.this);
+                sendAndRequestResponse(bitmap); //Volley Mild
+                progressDialog = new ProgressDialog(GalleryImage.this);
 //                Intent intent = new Intent(GalleryImage.this, ShowResult.class);
 //                startActivity(intent);
 //                progressDialog.setMessage("Uploading, please wait...");
@@ -87,304 +89,13 @@ public class GalleryImage extends AppCompatActivity {
 //                sendLeave();
             }
         });
-//        btnNext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("Click", "OnClick");
-//                progressDialog = new ProgressDialog(GalleryImage.this);
-//                progressDialog.setMessage("Uploading, please wait...");
-//                progressDialog.show();
-//                VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
-//                    @Override
-//                    public void onResponse(NetworkResponse response) {
-//                        String resultResponse = new String(response.data);
-//                        System.out.println("this is seperator rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-//                        System.out.println(resultResponse);
-//
-//                        try {
-//                            JSONObject result = new JSONObject(resultResponse);
-//
-//                            String status = result.getString("status");
-//                            String message = result.getString("message");
-//
-//                            if (status.equals(true)) { /*test true*/
-//                                // tell everybody you have succeed upload image and post strings
-//                                Log.i("Message", message);
-//                            } else {
-//                                Log.i("Unexpected", message);
-//                            }//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        NetworkResponse networkResponse = error.networkResponse;
-//                        String errorMessage = "Unknown error";
-//                        if (networkResponse == null) {
-//                            if (error.getClass().equals(TimeoutError.class)) {
-//                                errorMessage = "Request timeout";
-//                            } else if (error.getClass().equals(NoConnectionError.class)) {
-//                                errorMessage = "Failed to connect server";
-//                            }
-//                        } else {
-//                            String result = new String(networkResponse.data);
-//                            try {
-//                                JSONObject response = new JSONObject(result);
-//                                String status = response.getString("status");
-//                                String message = response.getString("message");
-//
-//                                Log.e("Error Status", status);
-//                                Log.e("Error Message", message);
-//
-//                                if (networkResponse.statusCode == 404) {
-//                                    errorMessage = "Resource not found";
-//                                } else if (networkResponse.statusCode == 401) {
-//                                    errorMessage = message+" Please login again";
-//                                } else if (networkResponse.statusCode == 400) {
-//                                    errorMessage = message+ " Check your inputs";
-//                                } else if (networkResponse.statusCode == 500) {
-//                                    errorMessage = message+" Something is getting wrong";
-//                                }
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                        Log.i("Error", errorMessage);
-//                        error.printStackTrace();
-//                    }
-//                }) {
-//                    @Override
-//                    protected Map<String, String> getParams() {
-//                        Map<String, String> params = new HashMap<>();
-//                        //params.put("api_token", "gh659gjhvdyudo973823tt9gvjf7i6ric75r76");
-////                params.put("img", imageView.getText().toString());
-//                        //params.put("name", mNameInput.getText().toString());
-//                        //params.put("location", mLocationInput.getText().toString());
-//                        //params.put("about", mAvatarInput.getText().toString());
-//                        //params.put("contact", mContactInput.getText().toString());
-//                        return params;
-//                    }
-//
-//                    @Override
-//                    protected Map<String, DataPart> getByteData() {
-//                        Map<String, DataPart> params = new HashMap<>();
-//                        // file name could found file base or direct access from real path
-//                        // for now just get bitmap data from ImageView
-//                        //params.put("avatar", new DataPart("file_avatar.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), mAvatarImage.getDrawable()), "image/jpeg"));
-//                        //params.put("cover", new DataPart("file_cover.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), mCoverImage.getDrawable()), "image/jpeg"));
-//                        //DataPart second parameter is byte[]
-//                        return params;
-//                    }
-//                };
-//
-//                VolleySingleton.getInstance(getBaseContext()).addToRequestQueue(multipartRequest);
-//            }
-//        });
-
-//        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
-//            @Override
-//            public void onResponse(NetworkResponse response) {
-//                String resultResponse = new String(response.data);
-//                try {
-//                    JSONObject result = new JSONObject(resultResponse);
-//                    String status = result.getString("status");
-//                    String message = result.getString("message");
-//
-//                    if (status.equals(true)) { /*test true*/
-//                        // tell everybody you have succeed upload image and post strings
-//                        Log.i("Message", message);
-//                    } else {
-//                        Log.i("Unexpected", message);
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                NetworkResponse networkResponse = error.networkResponse;
-//                String errorMessage = "Unknown error";
-//                if (networkResponse == null) {
-//                    if (error.getClass().equals(TimeoutError.class)) {
-//                        errorMessage = "Request timeout";
-//                    } else if (error.getClass().equals(NoConnectionError.class)) {
-//                        errorMessage = "Failed to connect server";
-//                    }
-//                } else {
-//                    String result = new String(networkResponse.data);
-//                    try {
-//                        JSONObject response = new JSONObject(result);
-//                        String status = response.getString("status");
-//                        String message = response.getString("message");
-//
-//                        Log.e("Error Status", status);
-//                        Log.e("Error Message", message);
-//
-//                        if (networkResponse.statusCode == 404) {
-//                            errorMessage = "Resource not found";
-//                        } else if (networkResponse.statusCode == 401) {
-//                            errorMessage = message+" Please login again";
-//                        } else if (networkResponse.statusCode == 400) {
-//                            errorMessage = message+ " Check your inputs";
-//                        } else if (networkResponse.statusCode == 500) {
-//                            errorMessage = message+" Something is getting wrong";
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                Log.i("Error", errorMessage);
-//                error.printStackTrace();
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<>();
-//                //params.put("api_token", "gh659gjhvdyudo973823tt9gvjf7i6ric75r76");
-////                params.put("img", imageView.getText().toString());
-//                //params.put("name", mNameInput.getText().toString());
-//                //params.put("location", mLocationInput.getText().toString());
-//                //params.put("about", mAvatarInput.getText().toString());
-//                //params.put("contact", mContactInput.getText().toString());
-//                return params;
-//            }
-//
-//            @Override
-//            protected Map<String, DataPart> getByteData() {
-//                Map<String, DataPart> params = new HashMap<>();
-//                // file name could found file base or direct access from real path
-//                // for now just get bitmap data from ImageView
-//                //params.put("avatar", new DataPart("file_avatar.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), mAvatarImage.getDrawable()), "image/jpeg"));
-//                //params.put("cover", new DataPart("file_cover.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), mCoverImage.getDrawable()), "image/jpeg"));
-//                //DataPart second parameter is byte[]
-//                return params;
-//            }
-//        };
-//
-//        VolleySingleton.getInstance(getBaseContext()).addToRequestQueue(multipartRequest);
-
-//        btnNext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                progressDialog = new ProgressDialog(GalleryImage.this);
-//                progressDialog.setMessage("Uploading, please wait...");
-//                progressDialog.show();
-//
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//                byte[] imageBytes = baos.toByteArray();
-//                final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-//
-//
-//                StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
-//                    @Override
-//                    public void onResponse(String s) {
-//                        progressDialog.dismiss();
-//                        if(s.equals("true")){
-//                            Toast.makeText(GalleryImage.this, "Uploaded Successful", Toast.LENGTH_LONG).show();
-////                            log.info("dai");
-//                            Log.d("Status", "Success");
-//                        }
-//                        else{
-//                            Toast.makeText(GalleryImage.this, "Some error occurred!", Toast.LENGTH_LONG).show();
-////                            log.info("maidai");
-//                            //Log.d("Status", "Error");
-//
-//                        }
-//                    }
-//                },new Response.ErrorListener(){
-//                    @Override
-//                        public void onErrorResponse(VolleyError volleyError) {
-//                            Toast.makeText(GalleryImage.this, "Some error occurred -> "+volleyError, Toast.LENGTH_LONG).show();
-//                            Log.d("Status", "Bok wa ERROR ngai EDOK");
-//                        }
-//                    }) {
-//                        //adding parameters to send
-//                        @Override
-//                        protected Map<String, String> getParams() throws AuthFailureError {
-//                            Map<String, String> parameters = new HashMap<String, String>();
-//                            //parameters.put("file", new MultipartRequest.DataPart());
-//                            parameters.put("photo", imageString);
-//                            return parameters;
-//                    }
-//                };
-//
-//                RequestQueue rQueue = Volley.newRequestQueue(GalleryImage.this);
-//                rQueue.add(request);
-//            }
-//        });
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//            Uri filePath = data.getData();
-//
-//            try {
-//                //getting image from gallery
-//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-//
-//                //Setting image to ImageView
-//                //image.setImageBitmap(bitmap);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//}
-
-//        setBtnNext(buttonNext);
-//
-//        buttonNext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                sendAndRequestResponse();
-//            }
-//        });
-//    }
-
-
-//////////////////////////////////////Multipart///////////////////////////////
-
-
-    ///////////////////////////////////////////////////////////////////
-
-
-//    private void jsonParse(){
-////        bin = new File("E:\\meter.jpg");
-//        String url ="http://127.0.0.1:5000/upload";
-//        log.info(url);
-//
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            JSONArray jsonArray = response.getJSONArray("");
-//                        } catch (Exception e) {
-//                            log.info(" Test Error");
-//
-//                            log.info(e.getMessage());
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                error.printStackTrace();
-//            }
-//        })
-//        ;
-//
-//        log.info(request.getBodyContentType());
-//        log.info("request.getBodyContentType()");
-//
-//
-//    }
 
 
 //////////////////////////////////Volley///////////////////////////////////
