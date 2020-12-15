@@ -37,11 +37,11 @@ public class GalleryImage extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 11 ;
     private TextView mTextViewResult;
     private RequestQueue mQueue;
-    private Bitmap bitmap;
+    Bitmap bitmap;
     private Button btnBack, btnNext;
-    private ImageView imageView;
+    ImageView imageView;
     private String command;
-    private int INPUT_SIZE = 200;
+    private int INPUT_SIZE = 300;
     private Uri image;
     private String result;
     private RequestQueue mRequestQueue;
@@ -69,8 +69,6 @@ public class GalleryImage extends AppCompatActivity {
         back = findViewById(R.id.button_back_gl);
 
         result = null;
-        System.out.println("testtest");
-
 
         mTextViewResult = findViewById(R.id.ranking);
         mQueue = Volley.newRequestQueue(this);
@@ -99,9 +97,9 @@ public class GalleryImage extends AppCompatActivity {
 
 
 //////////////////////////////////Volley///////////////////////////////////
-//
+
         private void sendAndRequestResponse (final Bitmap bitma) {
-// ref na pai do saaaa: https://www.maxester.com/blog/2019/10/04/upload-file-image-to-the-server-using-volley-in-android/
+// reference: https://www.maxester.com/blog/2019/10/04/upload-file-image-to-the-server-using-volley-in-android/
             VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
                     new Response.Listener<NetworkResponse>() {
                         @Override
@@ -113,7 +111,7 @@ public class GalleryImage extends AppCompatActivity {
                                     // TODO call process after get name
                                     Toast.makeText(getApplicationContext(), obj.getString("result"), Toast.LENGTH_SHORT).show();
                                     if (obj.get("result") != null) {
-                                        Intent intent = new Intent(GalleryImage.this, ShowResult.class);
+                                        Intent intent = new Intent(GalleryImage.this, TargetActivity.class);
                                         intent.putExtra("MedKey", obj.getString("result"));
                                         startActivity(intent);
                                     }
@@ -153,8 +151,6 @@ public class GalleryImage extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-    //private class VolleyMultipartRequest {
-
 
 ////////////////////Retrofit/////////////////////////////////////////////
 
