@@ -14,6 +14,15 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Result"-->
+<!--                            android:textSize="28dp"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_centerVertical="true">-->
+<!--                        </TextView>-->
                         <ImageView
                             android:id="@+id/show_result_back"
                             android:layout_width="wrap_content"
@@ -57,17 +66,51 @@
                                     app:iss_period="5000"
                                     app:iss_corner_radius="5">
                                 </com.denzcoskun.imageslider.ImageSlider>
-<!--                                <ImageView-->
-<!--                                    android:id="@+id/show_result_imageResult"-->
-<!--                                    android:src="@drawable/ic_baseline_photo_24"-->
-<!--                                    android:layout_width="224dp"-->
-<!--                                    android:layout_height="224dp"-->
-<!--                                    android:layout_marginStart="8dp"-->
-<!--                                    android:layout_marginTop="20dp"-->
-<!--                                    android:layout_marginEnd="8dp"-->
-<!--                                    android:layout_marginBottom="8dp"-->
+<!--                                <RelativeLayout-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:id="@+id/image_layout"-->
 <!--                                    android:layout_centerHorizontal="true">-->
-<!--                                </ImageView>-->
+<!--                                        <ImageView-->
+<!--                                            android:id="@+id/original_imageResult"-->
+<!--                                            android:src="@drawable/ic_baseline_photo_24"-->
+<!--                                            android:layout_width="150dp"-->
+<!--                                            android:layout_height="150dp"-->
+<!--                                            android:layout_marginStart="8dp"-->
+<!--                                            android:layout_marginTop="20dp"-->
+
+<!--                                            android:layout_marginBottom="8dp">-->
+<!--                                        </ImageView>-->
+
+<!--                                        <ImageView-->
+<!--                                            android:id="@+id/show_result_imageResult"-->
+<!--                                            android:src="@drawable/ic_baseline_photo_24"-->
+<!--                                            android:layout_width="150dp"-->
+<!--                                            android:layout_height="150dp"-->
+<!--                                            android:layout_marginStart="40dp"-->
+<!--                                            android:layout_marginTop="20dp"-->
+<!--                                            android:layout_marginBottom="8dp"-->
+<!--                                            android:layout_toRightOf="@id/original_imageResult">-->
+<!--                                        </ImageView>-->
+
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/original"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:layout_below="@id/original_imageResult"-->
+<!--                                            android:layout_marginStart="35dp"-->
+<!--                                            android:text="Uploaded Image">-->
+<!--                                        </TextView>-->
+
+<!--                                        <TextView-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:layout_below="@id/show_result_imageResult"-->
+<!--                                            android:layout_toRightOf="@id/original"-->
+<!--                                            android:layout_marginStart="95dp"-->
+<!--                                            android:text="Result Image">-->
+<!--                                        </TextView>-->
+<!--                                </RelativeLayout>-->
 
                                 <TextView
                                     android:id="@+id/brand_name"
