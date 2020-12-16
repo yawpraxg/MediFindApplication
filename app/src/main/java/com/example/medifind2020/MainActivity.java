@@ -179,7 +179,9 @@ public class MainActivity extends AppCompatActivity {
             imageBitmapCamera = Bitmap.createScaledBitmap(imageBitmapCamera, INPUT_SIZE, INPUT_SIZE, false);
 
             Intent intent = new Intent(MainActivity.this, GalleryImage.class);
+            Intent intentTarget = new Intent(MainActivity.this, TargetActivity.class);
             intent.putExtra("photo", imageBitmapCamera);
+            intentTarget.putExtra("image", imageBitmapCamera);
             startActivity(intent);
             //Uri imageData = data.getData();
             //imageView.setImageURI(imageData);
@@ -192,7 +194,9 @@ public class MainActivity extends AppCompatActivity {
                 imageBitmapGallery = Bitmap.createScaledBitmap(imageBitmapGallery, INPUT_SIZE, INPUT_SIZE, false);
 
                 Intent intent = new Intent(MainActivity.this, GalleryImage.class);
+                Intent intentTarget = new Intent(MainActivity.this, TargetActivity.class);
                 intent.putExtra("photo", imageBitmapGallery);
+                intentTarget.putExtra("image", imageBitmapGallery);
                 startActivity(intent);
             }catch (Exception e){
                 e.printStackTrace();

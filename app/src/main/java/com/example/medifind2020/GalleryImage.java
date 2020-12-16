@@ -48,7 +48,6 @@ public class GalleryImage extends AppCompatActivity {
     private StringRequest mStringRequest;
     // The first url is mocking api.
     // The second the real api from python
-    //private String url = "https://jsonplaceholder.typicode.com/posts";
     private String url = "https://medifindapi.herokuapp.com/predict";
     private ArrayList<MedItem> medItems = new ArrayList<>();
     private Button back;
@@ -80,11 +79,8 @@ public class GalleryImage extends AppCompatActivity {
 
                 sendAndRequestResponse(bitmap); //Volley Mild
                 progressDialog = new ProgressDialog(GalleryImage.this);
-//                Intent intent = new Intent(GalleryImage.this, ShowResult.class);
-//                startActivity(intent);
-//                progressDialog.setMessage("Uploading, please wait...");
-//                progressDialog.show();
-//                sendLeave();
+                progressDialog.setMessage("Uploading, please wait...");
+                progressDialog.show();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +91,10 @@ public class GalleryImage extends AppCompatActivity {
         });
     }
 
-
 //////////////////////////////////Volley///////////////////////////////////
 
         private void sendAndRequestResponse (final Bitmap bitma) {
-// reference: https://www.maxester.com/blog/2019/10/04/upload-file-image-to-the-server-using-volley-in-android/
+            // reference: https://www.maxester.com/blog/2019/10/04/upload-file-image-to-the-server-using-volley-in-android/
             VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,
                     new Response.Listener<NetworkResponse>() {
                         @Override
@@ -113,6 +108,7 @@ public class GalleryImage extends AppCompatActivity {
                                     if (obj.get("result") != null) {
                                         Intent intent = new Intent(GalleryImage.this, TargetActivity.class);
                                         intent.putExtra("MedKey", obj.getString("result"));
+                                        intent.putExtra("image", bitmap);
                                         startActivity(intent);
                                     }
                                 } else if("error" != null){
@@ -151,97 +147,6 @@ public class GalleryImage extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-
-////////////////////Retrofit/////////////////////////////////////////////
-
-//    public void setBtnNext(Button btnNext) {
-//        this.btnNext = btnNext;
-//        btnNext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                uploadImage();
-//            }
-//        });
-//    }
-//
-//    private void uploadImage() {
-//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
-//        byte[] imageInByte = byteArrayOutputStream.toByteArray();
-//
-//        String encodeImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
-//
-//        Call<ResponsePOJO> call = RetroClient.getInstance().getApi().uploadImage(encodeImage);
-//        call.enqueue(new Callback<ResponsePOJO>() {
-//            @Override
-//            public void onResponse(Call<ResponsePOJO> call, retrofit2.Response<ResponsePOJO> response) {
-//                Toast.makeText(GalleryImage.this, response.body().getRemarks(), Toast.LENGTH_SHORT).show();
-//
-//                if (response.body().getRemarks() != null) {
-//                    log.info("yay");
-//                    //return;
-//
-//                } else {
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponsePOJO> call, Throwable t) {
-//                Toast.makeText(GalleryImage.this, "Network Failed", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//    }
-//public void sendLeave(){
-//    progressDialog.show();
-//    MultipartRequest multipartRequest = new MultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
-//        @Override
-//        public void onResponse(NetworkResponse response) {
-//            Log.d("Status", "Successful");
-//        }
-//    }, new Response.ErrorListener() {
-//        @Override
-//        public void onErrorResponse(VolleyError error) {
-//            Log.d("Status", "Error");
-//        }
-//    }){
-//        @Override
-//        protected Map<String, String> getParams() throws AuthFailureError {
-//            Map<String,String> params = new HashMap<>();
-////            params.put("parent_id", SharedPreferenceManager.getmInstance(getActivity()).getID());
-////            params.put("student_id",studentid);
-////            params.put("reason",txtReason.getText().toString());
-////            params.put("start_date",txtFromDate.getText().toString());
-////            params.put("end_date",txtToDate.getText().toString());
-//
-////            int i=0;
-////            for (String temp: teacherid){
-////                params.put("teacher_id["+(i++)+"]", temp);
-////            }
-//            return params;
-//        }
-//
-//        @Override
-//        protected Map<String, MultipartRequest.DataPart> getByteData() {
-//            Map<String, MultipartRequest.DataPart> params = new HashMap<>();
-//
-//            params.put("img", new MultipartRequest.DataPart());
-//            return params;
-//        }
-//
-//        @Override
-//        public Map<String, String> getHeaders() throws AuthFailureError {
-//            Ma p<String,String> headers = super.getHeaders();
-//            if (headers == null || headers.equals(Collections.<String, String>emptyMap())){
-//                headers = new HashMap<String, String>();
-//            }
-////            MyApp.get().addSessionCookie(headers);
-//            return headers;
-//        }
-//    };
-//    RequestQueue queue = Volley.newRequestQueue(getContext());
-//    queue.add(multipartRequest);
 }
 
 

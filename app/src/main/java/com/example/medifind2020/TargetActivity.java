@@ -3,11 +3,13 @@ package com.example.medifind2020;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -29,7 +31,7 @@ public class TargetActivity extends AppCompatActivity {
     ImageView uploadedImage, resultImage, back;
     FirebaseFirestore firebaseFirestore;
     CollectionReference ref;
-    GalleryImage galleryImage = new GalleryImage();
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,9 @@ public class TargetActivity extends AppCompatActivity {
         final ImageSlider imageSlider = findViewById(R.id.slider);
         back = findViewById(R.id.target_back);
 
-        uploadedImage.setImageBitmap(galleryImage.bitmap);
+        bitmap = this.getIntent().getParcelableExtra("image");
+        uploadedImage.setImageBitmap(bitmap);
+
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         ref = firebaseFirestore.collection("Med_des");
@@ -90,7 +94,8 @@ public class TargetActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(TargetActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
